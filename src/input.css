@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:host {
+    width: 100%;
+ }
+ 
+ .button {
+    font-size: 12px;
+ }
+ 
+ .button__disabled {
+    color: #888787;
+    cursor: default;
+ }
+
+ .border-dark {
+   --tw-border-opacity: 1;
+   border-color: rgba(136, 135, 135, var(--tw-border-opacity));
+}

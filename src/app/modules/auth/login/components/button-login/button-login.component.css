@@ -1,0 +1,12 @@
+:host {
+   width: 100%;
+}
+
+.button {
+   font-size: 12px;
+}
+
+.button__disabled {
+   color: #888787;
+   cursor: default;
+}

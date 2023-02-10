@@ -1,0 +1,270 @@
+{
+    "project": {
+      "name": "Pulzo"
+    },
+    "pending": "En revisión",
+    "rejected": "Rechazado",
+    "approved": "Publicado",
+    "login": {
+      "login": "Iniciar sesión",
+      "form": {
+        "title": "Iniciar sesión",
+        "description": "Bienvenido.",
+        "error": {
+          "email": "Correo electrónico inválido",
+          "empty_password": "Contraseña inválida",
+          "password": "Contraseña incorrecta. Inténtalo de nuevo",
+          "wrongUser": "El usuario no existe",
+          "inactiveUser": "El usuario se encuentra inactivo"
+        }
+      }
+    },
+    "documents":{
+      "begin": "Antes de empezar",
+      "step1": "Paso 1: Necesitamos tu información",
+      "note": "NOTA: No sera posible ingresar al dashboard hasta estar subidos y aprobados los documentos",
+      "upload": "Subir",
+      "document": "documento",
+      "rut": "RUT",
+      "comercio": "Cámara de comercio",
+      "cedula": "Cédula (C.C)",
+      "certificacion": "Certificación bancaria",
+      "continue": "Continuar"
+    },
+    "accountType":{
+      "next": "Falta poco...",
+      "step2": "Paso 2: Elige un tipo de cuenta",
+      "note": "NOTA: El tipo de cuenta se elige una única vez.",
+      "automatic": "Automático",
+      "manual": "Manual"
+  
+    },
+    "globals": {
+      "save": "Guardar",
+      "list": "Lista",
+      "add": "Añadir",
+      "login": "Login",
+      "delete": "Borrar",
+      "edit": "Editar",
+      "cancel": "Cancelar",
+      "back": "Volver",
+      "new": "Agregar",
+      "send": "Enviar",
+      "select": "Seleccionar...",
+      "chooseFile": "Elegir archivo",
+      "see": "Ver más",
+      "accept": "Aceptar",
+      "refuse": "Rechazar",
+      "start": "Iniciar",
+      "total": "Total",
+      "gainTotal":"Ganancia total",
+      "download": "Descargar",
+      "upload": "Subir",
+      "update": "Actualizar",
+      "filter": "Filtrar",
+      "clean": "Limpiar filtro",
+      "close": "Cerrar"
+    },
+    "admin":{
+      "title": "Admin Dashboard",
+      "h1": "Usuarios",
+      "h2": "PULZO 2.0",
+      "modal": {
+        "title": "Advertencia"
+      },
+      "user": {
+        "user": "Usuario / Empresa",
+        "email": "Correo Pulzo",
+        "status": "Estado",
+        "form":{
+          "menu": {
+            "title": "Perfil",
+            "basic": "Info básica",
+            "contact": "Contacto",
+            "bank": "Info bancaria",
+            "h1": "INFORMACIÓN BÁSICA DEL ALIADO"
+          },
+          "required": "Dato obligatorio",
+          "successMessage": "INFORMACIÓN GUARDADA EXITOSAMENTE"
+        }
+      }
+    },
+  
+    "alliances":{
+      "title": "Dashboard"
+    },
+  
+    "reports":{
+      "title": "Dashboard reportes"
+    },
+    "cms":{
+      "title": "Dashboard manual"
+    },
+    "rss":{
+      "title": "Dashboard Automatico"
+    },
+    "hybrid":{
+      "title": "Dashboard Aliado",
+      "infoRssTitle": "No tienes habilitada esta función.",
+      "infoRss": "La opción RSS te permite enviar grandes volúmenes de contenido de forma automática. Si quieres adquirirla, escribe al correo: soportealiados@pulzo.com" 
+    },
+    "financial":{
+      "title": "Dashboard Financiero",
+      "h1": "Información aliados",
+      "h2": "PULZO 2.0",
+      "partner": "Aliado ",
+      "email": "Correo",
+      "info": "Información",
+      "bill":{
+        "h1": "Facturación aliados",
+        "date": "Fecha",
+        "partner": "Aliado",
+        "person": "Persona",
+        "value":"V. Base",
+        "valueCal":"V. Calculado",
+        "document": "PDF",
+        "status": "Estado",
+        "approved": "Aprobado",
+        "pending": "Pendiente",
+        "rejected": "Rechazado",
+        "all": "Todo",
+        "natural": "Persona natural",
+        "legal": "Persona jurídica" 
+      },
+      "payment":{
+        "h1":"Pago",
+        "initialValue": "Valor base",
+        "calculatedValue": "Valor calculado"
+      },
+      "nav":{
+        "title": "Área financiera",
+        "partner": "Información aliados",
+        "bill": "Facturación aliados",
+        "pay": "Pago"
+      },
+      "infoPartner":{
+        "basic": "Información básica",
+        "contact": "Información de contacto",
+        "financial": "Información financiera",
+        "type": "Tipo de cuenta bancaría",
+        "docPartner": "Documentos aliado"
+      }
+    },
+    "dashboard":{
+      "sidebar": {
+        "h1": "Estadísticas",
+        "h2": "MENSUALES",
+        "empty": "Pronto tendremos",
+        "empty_2": "información para ti",
+        "date": "Información actualizada hasta",
+        "payment": "Asi van tus ingresos:",
+        "article_num": "ARTÍCULOS ENVIADOS",
+        "article_status": "ESTADO ARTÍCULOS",
+        "approved": "Publicados",
+        "pending": "En Revisión",
+        "rejected": "Rechazados",
+        "message": "Estas serian tus ganancias con el ",
+        "message2": "modelo Revenue share 50/50"
+      },
+      "main":{
+        "breadcrumb": "Dashboard / Artículos",
+        "h1": "Listado de artículos",
+        "h2": "PULZO 2.0",
+        "new": "Nuevo artículo",
+        "eraser": "Borradores",
+        "titleButton":"RSS",
+        "empty_title": "No tenemos ningún artículo tuyo por ahora",
+        "empty_message": "¡Agrega un artículo y empecemos!",
+        "message": "En las busquedas aparecen todos los artículos, no solo los del mes.",
+        "messagerevenue": "En la tabla aparecen los ingresos generados por cada artículo en el mes actual",
+        "table": {
+          "title": "TÍTULO",
+          "date": "FECHA",
+          "state": "ESTADO",
+          "edit": "EDICIÓN",
+          "pageview": "PÁGINAS VISTAS",
+          "payment": "GANANCIA"
+        },
+        "filter": {
+          "page": "Página",
+          "year": "Año",
+          "month": "Mes",
+          "person": "Persona",
+          "title": "Filtrar por estado",
+          "select": "Seleccione",
+          "search": "Buscar"
+        }
+      },
+      "greetins": "¡Hola de nuevo,",
+      "form": {
+        "h1": "Nuevo artículo",
+        "title": "TÍTULO",
+        "lead": "SUBTÍTULO",
+        "image": "IMAGEN PRINCIPAL",
+        "image_label": "Seleccionar archivo",
+        "image_upload": "Subir imagen",
+        "image_title": "TÍTULO IMAGEN",
+        "image_alttext": "TEXTO",
+        "image_credit": "CRÉDITOS IMAGEN",
+        "body": "CONTENIDO",
+        "url": "URL ARTÍCULO ORIGINAL",
+        "requiredTitle": "*(Información obligatoria, mín 30 y máx 90 caracteres)",
+        "requiredLead": "*(Info obligatoria, mín 130 y máx 160 caracteres)",
+        "requiredTextarea": "*(Información obligatoria, el mínimo de palabras a escribir es de 250)",
+        "characters90": "El título debe contener mínimo 30 y máximo 90 caracteres.",
+        "characters160": "El subtítulo debe tener mínimo 130 y máximo 160 caracteres."
+  
+      },
+      "accountFinancial":{
+        "billingSummary": "Resumen facturación",
+        "billing": "Facturación",
+        "rejected": "Su documento no fue aprobado",
+        "downAccount": "Cuenta de cobro PDF",
+        "messagePayment": "Esta tabla mostrará las ganancias de los articulos que tuviste durante el mes de",
+        "messageLegal":"En este espacio debes subir la cuenta de cobro previamente firmada y enviarla a nuestro equipo financiero.",
+        "messageNatural":"En este espacio debes subir la factura de tu empresa previamente firmada y enviarla.",
+        "messageWarning": "Recuerda que tienes 7 días habiles para cargar tu documento. En caso de cargarlo después de la fecha, se te acumulará para los primeros días del siguiente mes.",
+        "messagePulzo": "Información importante para completar tus documentos",
+        "messageDownload": "Aquí podrás descargar la cuenta de cobro en borrador."
+      }
+    },
+    "models": {
+      "user": {
+        "user": "Usuario",
+        "email": "Correo electrónico Pulzo",
+        "emailPersonal": "Correo Personal",
+        "name": "Name",
+        "password": "Contraseña",
+        "account_type": "Tipo de cuenta",
+        "company_name": "Nombre del medio",
+        "category": "Categoría",
+        "address": "Dirección",
+        "city": "Ciudad",
+        "zip_code": "Código Postal",
+        "phone": "Teléfono",
+        "website": "Website",
+        "type": "Tipo persona", 
+        "dni_cc": "C.C. (CÉDULA DE CIUDADANIA)",
+        "dni_nit": "NIT",
+        "dni_name": "Razón Social",
+        "fullName": "Nombre Completo",
+        "bank": "Banco",
+        "account_bank": "NO. CUENTA BANCARIA",
+        "taxes": "Obligaciones",
+        "iva" : "Iva"
+      },
+      "userPulzo": {
+        "h1": "INFORMACIÓN BÁSICA DEL USUARIO",
+        "account_type": "Tipo de cuenta",
+        "name": "Nombre",
+        "cargo": "Cargo",
+        "email": "Correo",
+        "password": "Contraseña"
+  
+      }
+    },
+    "layout": {
+      "footer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }
+  }
+  

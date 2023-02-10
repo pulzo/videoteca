@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js, ts}", './node_modules/iris-front/esm2020/**/*.mjs'],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -101,13 +101,9 @@ module.exports = {
 
     },
     extend: {},
-    backgroundColor: theme => ({
-      ...theme('colors'),
-      'gray': '#f8f8f8',
-     }),
   },
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography')],
+  plugins: [],
 }
