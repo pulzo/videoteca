@@ -50,6 +50,7 @@ export class AuthService {
         }
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { account_type, ...user } = data;
+        console.log(data)
         return {
           ...user,
           accounType: data.account_type,
@@ -60,7 +61,7 @@ export class AuthService {
 
   logout() {
     this.user = null;
-    this.http.get<any>(`${this.baseUrl}/api-hermes/logout`);
+    this.http.get<any>(`${this.baseUrl}/logout`);
     sessionStorage.removeItem('token');
     //sessionStorage.clear();
     //sessionStorage.empty();
