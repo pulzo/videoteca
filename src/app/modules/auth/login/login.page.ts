@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -48,50 +48,20 @@ export class LoginPage implements OnInit {
             this.authService.user = user;
           }
         }),
-        switchMap((user) => this.authService.getUser(user)),
-        tap((user: any) => {
-          if (user?.error) {
-            return;
-          }
-          this.authService.user = user;
-          switch (user.role) {
-            case 'Admin':
-              this.router.navigate(['/admin-dashboard']);
-              break;
-            case 'Financial':
-              this.router.navigate(['/financial-dashboard']);
-              break;
-            case 'Reports':
-              this.router.navigate(['/report-dashboard']);
-              break;
-            case 'Alliances':
-              this.router.navigate(['/alliances-dashboard']);
-              break;
-            default:
-              //if (user.documents.complete) {
-              if (user?.accounType == '' || user.user?.account_type == '') {
-                this.router.navigate(['/account-type']);
-              } else if (user?.accounType == 'manual' || user.user?.account_type == 'manual') {
-                this.router.navigate(['/cms-dashboard']);
-              } else if (user?.accounType == 'automatic' || user.user?.account_type == 'automatic') {
-                this.router.navigate(['/rss-dashboard']);
-              } else if (user?.accounType == 'hybrid' || user.user?.account_type == 'hybrid') {
-                this.router.navigate(['/hybrid-dashboard']);
-              } else if (
-                user?.accounType == 'trial' ||
-                user.user?.account_type == 'trial' ||
-                user?.accounType == 'robby' ||
-                user.user?.account_type == 'robby'
-              ) {
-                this.router.navigate(['/trial-dashboard']);
-              } else {
-                this.router.navigate(['/login']);
-              }
-              break;
-          }
-        })
+
       )
-      .subscribe();
+      .subscribe(data => {
+        switch (data.role) {
+          case 'GalleryAdmin':
+            this.router.navigate(['/home-dashboard']);
+            break;
+          default:
+            this.router.navigate(['/login']);
+            break;
+        }
+
+      }
+      );
   }
 
   public noWhitespaceValidator(control: any) {

@@ -11,7 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { httpInterceptorProviders } from './core/interceptors';
 import { MainLayoutComponent } from './layout/components/main-layout/main-layout.component';
 import { LayoutModule } from './layout/layout.module';
-import { BugModule } from './modules/bug/bug.module';
+import { ErrorsModule } from './modules/errors/errors.module';
+
 
 
 
@@ -32,7 +33,7 @@ import { BugModule } from './modules/bug/bug.module';
     TranslocoRootModule,
     AppRoutingModule,
     LayoutModule,
-    BugModule
+    ErrorsModule
     
   ],
   providers: [httpInterceptorProviders, AppComponent],

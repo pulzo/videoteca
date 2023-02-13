@@ -21,6 +21,7 @@ export class AuthService {
     if (user?.token) {
       sessionStorage.setItem('token', user?.token);
     }
+    
     this._user = user;
   }
 
@@ -46,14 +47,11 @@ export class AuthService {
       map((data: any) => {
         if (!data || !data.email) {
           return { code: data.code, error: data.message };
-          //return data.message === 'contraseña incorrecta' ? { error: 'WrongPassword' } : null;
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { account_type, ...user } = data;
-        console.log(data)
+        const { ...user } = data;
+       
         return {
           ...user,
-          accounType: data.account_type,
         };
       })
     );

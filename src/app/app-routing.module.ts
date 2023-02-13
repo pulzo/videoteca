@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPage } from './modules/auth/login/login.page';
 import { MainLayoutComponent } from './layout/components/main-layout/main-layout.component';
+import { InternalServerComponent } from './modules/errors/internal-server/internal-server.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
       path: 'login',
       component: LoginPage,
+    },
+    {
+      path: 'home-dashboard',
+      component: InternalServerComponent,
     },
     // {
     //   path: 'not-found',

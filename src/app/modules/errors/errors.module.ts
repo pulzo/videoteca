@@ -9,4 +9,4 @@ import { NotFoundComponent } from './not-found/not-found.module';
   declarations: [NotFoundComponent, InternalServerComponent],
   imports: [RouterModule],
 })
-export class BugModule {}
+export class ErrorsModule {}
