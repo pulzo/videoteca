@@ -31,13 +31,6 @@ export class AuthService {
     return !!this._user;
   }
 
-  getUser(user: any): Observable<any> {
-    //return of(user);
-    if (user?.role !== 'Partner') {
-      return of(user);
-    }
-    return this.http.get<any>(`${this.baseUrl}/api-hermes/user/${user?.email}`);
-  }
 
   login(email: string, password: string): Observable<User> {
     const formData: any = new FormData();
