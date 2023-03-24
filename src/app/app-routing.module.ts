@@ -7,9 +7,10 @@ import { InternalServerComponent } from './modules/errors/internal-server/intern
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
-  {path: '',
-  component: MainLayoutComponent,
-  children: [
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
     {
       path: 'login',
       component: LoginPage,
