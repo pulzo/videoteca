@@ -1,0 +1,80 @@
+.dropdown {
+    display: inline-block;
+    position: relative;
+    direction: rtl;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    direction: ltr;
+    overflow: auto;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.dropdown-content a {
+    display: block;
+    color: #000000;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    color: #FFFFFF;
+    background-color: #00A4BD;
+}
+
+.button-tm {
+    color: #FFFFFF;
+    background-color: #00A4BD;
+}
+
+.text-button {
+    align-items: center;
+}
+
+.nav{
+    @apply bg-white shadow-lg pr-8 pl-10 pt-2 pb-2 md:flex md:justify-between md:items-center
+}
+
+.logo-pulzo{
+    @apply h-8 mx-4 md:ml-0
+}
+
+.app-title{
+    @apply border-l-2 pl-5 font-semibold text-sm uppercase text-gray-medio tracking-wide
+}
+
+.app-greeting{
+    @apply inline-block py-2 text-dark-light text-sm font-semibold no-underline pr-8
+}
+
+.nav-button{
+    @apply border-solid border rounded-lg w-20 grid grid-cols-2 pr-2 py-2
+}
+
+.user-login-container{
+    @apply flex gap-7 items-center justify-between
+}
+
+.img-login-container{
+    @apply w-8 h-8 rounded-full pl-1
+}
+
+.logout-container{
+    @apply dropdown-content bg-white rounded-md border-[1px]
+}
+
+.logout-item{
+    @apply w-40 h-10 rounded-md text-sm hover:text-red-light
+}
+
+.low-border{
+    @apply border rounded-md 
+}

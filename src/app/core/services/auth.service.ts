@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { environment as env } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models';
+import { PulzoHubService } from './pulzo-hub.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -25,7 +26,7 @@ export class AuthService {
     this._user = user;
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private pulzoHubService: PulzoHubService) {}
 
   isAuthenticated() {
     return !!this._user;
@@ -54,6 +55,7 @@ export class AuthService {
     this.user = null;
     this.http.get<any>(`${this.baseUrl}/logout`);
     sessionStorage.removeItem('token');
+    this.pulzoHubService.removePulzoHub();
     //sessionStorage.clear();
     //sessionStorage.empty();
     this.router.navigate(['/login']);

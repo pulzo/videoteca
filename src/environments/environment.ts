@@ -6,7 +6,7 @@ export const environment = {
     production: false,
     staging: false,
     // apiUrl: 'https://hermes-devbackend.pulzo2.com',
-    apiUrl: 'http://localhost:8080/cerbero/v1',
+    apiUrl: 'https://stage-cerberos.pulzo.com/qa/cerbero/v2',
     pageSize: 25,
     sentry: '',
     release: '2.5.1',

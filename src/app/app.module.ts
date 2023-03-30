@@ -13,11 +13,6 @@ import { MainLayoutComponent } from './layout/components/main-layout/main-layout
 import { LayoutModule } from './layout/layout.module';
 import { ErrorsModule } from './modules/errors/errors.module';
 
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent

@@ -5,6 +5,7 @@ import { finalize, switchMap, tap } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user.service';
+import { PulzoHubService } from 'src/app/core/services/pulzo-hub.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private pulzoHubService: PulzoHubService
   ) { }
 
   ngOnInit() {
@@ -51,9 +53,10 @@ export class LoginPage implements OnInit {
 
       )
       .subscribe(data => {
-        switch (data.role) {
-          case 'GalleryAdmin':
-            this.router.navigate(['/home-dashboard']);
+        switch (data.pulzohub) {
+          case 'GeneralCerbero':
+            this.pulzoHubService.setPulzoHub(data._id);
+            this.router.navigate(['/home']);
             break;
           default:
             this.router.navigate(['/login']);
