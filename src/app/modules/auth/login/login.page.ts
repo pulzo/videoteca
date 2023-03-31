@@ -58,6 +58,10 @@ export class LoginPage implements OnInit {
             this.pulzoHubService.setPulzoHub(data._id);
             this.router.navigate(['/home']);
             break;
+          case 'AdminCerbero':
+            this.pulzoHubService.setPulzoHub(data._id);
+            this.router.navigate(['/home']);
+            break;
           default:
             this.router.navigate(['/login']);
             break;
