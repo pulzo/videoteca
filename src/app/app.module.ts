@@ -12,6 +12,7 @@ import { httpInterceptorProviders } from './core/interceptors';
 import { MainLayoutComponent } from './layout/components/main-layout/main-layout.component';
 import { LayoutModule } from './layout/layout.module';
 import { ErrorsModule } from './modules/errors/errors.module';
+import { DataSharingService } from './core/services';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,8 @@ import { ErrorsModule } from './modules/errors/errors.module';
     AppRoutingModule,
     LayoutModule,
     ErrorsModule
-    
   ],
-  providers: [httpInterceptorProviders, AppComponent],
+  providers: [httpInterceptorProviders, AppComponent, DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

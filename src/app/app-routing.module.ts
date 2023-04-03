@@ -8,7 +8,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: '',
     component: MainLayoutComponent,
