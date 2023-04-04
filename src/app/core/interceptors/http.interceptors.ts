@@ -5,16 +5,14 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../services';
 import Swal from 'sweetalert2';
+import { StorageService } from '../services/storage.service';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private storageService: StorageService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let user: any = localStorage.getItem('user') || '';
-    if (user !== '') {
-      user = JSON.parse(user);
-    }
+    let user = this.storageService.decryptAndGetObject('user');
     const token = user.token;
 
     if (token && !req?.url.endsWith('login')) {

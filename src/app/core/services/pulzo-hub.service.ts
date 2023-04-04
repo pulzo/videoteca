@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from 'src/environments/environment';
-
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ export class PulzoHubService {
   pulzo_hub_key: string = 'pulzohub';
   baseUrl = `${env.apiCerberoUrl}`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storageService: StorageService) { }
 
   getPulzoHub() {
-    const item = JSON.parse(localStorage.getItem(this.pulzo_hub_key) || '[]');
+    const item = this.storageService.decryptAndGetObject(this.pulzo_hub_key);
     console.log('item', item);
     if (!item) {
       return null;
@@ -23,7 +23,6 @@ export class PulzoHubService {
   }
 
   setPulzoHub(id: number) {
-    // get apps
     this.getMyApps(id).subscribe((data: any) => {
       if (data) {
         const pulzohubValues = [];
@@ -32,7 +31,7 @@ export class PulzoHubService {
           pulzohubValues.push(pulzohubValue);
         }
         // save
-        localStorage.setItem(this.pulzo_hub_key, JSON.stringify(pulzohubValues));
+        this.storageService.encryptAndSaveObject(this.pulzo_hub_key, JSON.stringify(pulzohubValues));
       }
     });
   }

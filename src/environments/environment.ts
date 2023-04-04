@@ -7,11 +7,12 @@ export const environment = {
     staging: false,
     // apiUrl: 'https://hermes-devbackend.pulzo2.com',
     apiCerberoUrl: 'https://stage-cerberos.pulzo.com/qa/cerbero/v2',
-    geaAppURL: 'http://localhost:4700/',
+    geaAppURL: 'http://localhost:4700',
     cerberoFrontURL: 'http://localhost:4500',
     pageSize: 25,
     sentry: '',
     release: '2.5.1',
+    secretKey: 'jbe4jb43hjb56oie5jtil34894',
   };
   
   /*
