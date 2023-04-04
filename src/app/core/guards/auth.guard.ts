@@ -11,8 +11,8 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService, private dataSharingService: DataSharingService) {
   }
 
-  postAdminData(portal: string | undefined) {
-    this.dataSharingService.postCrossDomainMessage(portal);
+  postAdminData() {
+    this.dataSharingService.postCrossDomainMessage();
   }
 
   sendAppNameToCerberoFront() {
@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
     iframe.style.display = "none";
     (<HTMLIFrameElement>iframe).src = env.cerberoFrontURL;
     document.body.appendChild(iframe);
-    this.postAdminData('admin');
+    this.postAdminData();
   }
 
   canActivate(

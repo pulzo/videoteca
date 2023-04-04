@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ButtonsIrisModule, InputIrisModule } from 'iris-front';
 import { TranslocoRootModule } from './core/transloco-root.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from './modules/auth/auth.module';
+// import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { httpInterceptorProviders } from './core/interceptors';
@@ -23,7 +23,7 @@ import { DataSharingService } from './core/services';
     FontAwesomeModule,
     ButtonsIrisModule,
     InputIrisModule,
-    AuthModule,
+    // AuthModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslocoRootModule,

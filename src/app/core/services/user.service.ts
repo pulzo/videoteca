@@ -7,7 +7,7 @@ import { environment as env } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private baseUrl = `${env.apiUrl}`;
+  private baseUrl = `${env.apiCerberoUrl}`;
   private _user: User | null = null;
 
   constructor(private http: HttpClient) {}

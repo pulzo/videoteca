@@ -11,7 +11,11 @@ export class CustomHttpInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = sessionStorage.getItem('token');
+    let user: any = localStorage.getItem('user') || '';
+    if (user !== '') {
+      user = JSON.parse(user);
+    }
+    const token = user.token;
 
     if (token && !req?.url.endsWith('login')) {
       req = req.clone({

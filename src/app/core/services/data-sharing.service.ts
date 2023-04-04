@@ -1,28 +1,21 @@
 import { Injectable, OnInit, Component } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment as env } from '../../../environments/environment';
 @Injectable()
 export class DataSharingService {
 
     private userStorage;
     constructor() {
-        // this.userStorage = JSON.parse(localStorage.getItem('student.example.com') || '');
-        this.userStorage = environment.geaAppURL;
+        this.userStorage = env.geaAppURL;
     }
 
-    postCrossDomainMessage(portal = 'admin') {
-        let iframeId: any;
-        if (portal === 'admin') {
-            iframeId = 'admin-ifr';
-        }
-        const iframe = document.getElementById(iframeId);
-        // console.log(iframe);
+    postCrossDomainMessage() {
+        const iframe = document.getElementById('admin-ifr');
         if (iframe == null) { return; }
         const iWindow = (iframe as HTMLIFrameElement).contentWindow;
         const storageData = this.userStorage;
-        // console.log(storageData);
         setTimeout(function () {
-            iWindow?.postMessage(storageData, environment.cerberoFrontURL);
-            window.open(environment.cerberoFrontURL, '_self');
+            iWindow?.postMessage(storageData, env.cerberoFrontURL);
+            window.open(env.cerberoFrontURL, '_self');
         }, 1000);
     }
 

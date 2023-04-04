@@ -9,7 +9,7 @@ import { environment as env } from 'src/environments/environment';
 export class PulzoHubService {
 
   pulzo_hub_key: string = 'pulzohub';
-  baseUrl = `${env.apiUrl}`;
+  baseUrl = `${env.apiCerberoUrl}`;
 
   constructor(private http: HttpClient) { }
 

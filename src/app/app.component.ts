@@ -9,7 +9,7 @@ import { environment as env } from 'src/environments/environment';
 export class AppComponent {
   @HostListener('window:message', ['$event'])
   onMessage(e: { origin: string; data: any; }) {
-    if (e.origin === 'http://localhost:4500') {
+    if (e.origin === env.cerberoFrontURL) {
       console.log('onMessage', e);
       localStorage.setItem('user', JSON.stringify(e.data));
     }
