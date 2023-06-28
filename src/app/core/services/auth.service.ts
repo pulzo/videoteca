@@ -6,10 +6,12 @@ import { map } from 'rxjs/operators';
 import { environment as env } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models';
+import { PulzoHubService } from './pulzo-hub.service';
+import { StorageService } from './storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = `${env.apiUrl}`;
+  private baseUrl = `${env.apiCerberoUrl}`;
   private _user: User | null = null;
 
   get user(): User | null {
@@ -17,45 +19,29 @@ export class AuthService {
   }
 
   set user(user: User | null) {
-    sessionStorage.setItem('user', !!user ? JSON.stringify(user) : '');
+    this.storageService.encryptAndSaveObject('user', user);
     if (user?.token) {
-      sessionStorage.setItem('token', user?.token);
+      this.storageService.encryptAndSaveObject('token', user?.token);
     }
     
     this._user = user;
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private pulzoHubService: PulzoHubService, private storageService: StorageService) {}
 
   isAuthenticated() {
     return !!this._user;
   }
 
-
-  login(email: string, password: string): Observable<User> {
-    const formData: any = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
-    return this.http.post<any>(`${this.baseUrl}/login`, formData).pipe(
-      map((data: any) => {
-        if (!data || !data.email) {
-          return { code: data.code, error: data.message };
-        }
-        const { ...user } = data;
-       
-        return {
-          ...user,
-        };
-      })
-    );
-  }
-
   logout() {
     this.user = null;
     this.http.get<any>(`${this.baseUrl}/logout`);
-    sessionStorage.removeItem('token');
-    //sessionStorage.clear();
-    //sessionStorage.empty();
-    this.router.navigate(['/login']);
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.pulzoHubService.removePulzoHub();
+    //localStorage.clear();
+    //localStorage.empty();
+    // this.router.navigate(['/login']);
+    window.open(`${env.cerberoFrontURL}/home`, '_self');
   }
 }
