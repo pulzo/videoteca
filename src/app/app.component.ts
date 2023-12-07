@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { environment as env } from 'src/environments/environment';
 import { StorageService } from './core/services/storage.service';
 
@@ -8,15 +8,14 @@ import { StorageService } from './core/services/storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'gea';
 
   constructor(private storageService: StorageService) { }
 
   @HostListener('window:message', ['$event'])
   onMessage(e: { origin: string; data: any; }) {
     if (e.origin === env.cerberoFrontURL) {
-      console.log('onMessage', e);
       this.storageService.encryptAndSaveObject('user', e.data);
     }
   }
-  title = 'gea';
 }

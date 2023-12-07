@@ -1,0 +1,37 @@
+<!--Barra menu plegada-->
+<div class="bg-black w-14 max-h-full rounded-r-lg mr-2 relative z-10 h-screen" *ngIf="sider">
+    <div class="bg-dark rounded-full w-11 h-11 text-center py-2 ml-7 my-4" (click)="showSiderbar()">
+        <i class="fa fa-chevron-right text-white "></i>
+    </div>
+    <div class="border-b"></div>
+    <nav class="py-3 px-2">
+        <ul class="px-3 md:px-0 py-2 rounded-xl flex flex-wrap overflow-hidden items-center text-xs">
+            <button type="button" [routerLink]="['/home']" [ngClass]="{'bg-blue boder shadow h-7' :optionMenu == '1'}"
+                class="w-full h-9 cursor-pointer rounded-l-xl text-center pl-1 px-2 py-1 my-2">
+                <i class="fa fa-home fa-lg m-auto text-green-700 " [ngClass]="{'text-white' : optionMenu == '1'}"></i>
+            </button>
+        </ul>
+    </nav>
+</div>
+
+<!--Barra menu desplegada-->
+<div class="bg-black w-56 max-h-full rounded-r-lg mr-2 relative z-10 h-screen" *ngIf="!sider">
+    <div class="bg-dark rounded-full w-11 h-11 text-center py-2 ml-52 my-4" (click)="showSiderbar()">
+        <i class="fa fa-chevron-left text-white "></i>
+    </div>
+    <div class="pl-3 pb-5 border-b">
+        <p class="text-white text-lg">{{ 'globals.welcome' | transloco }}</p>
+    </div>
+
+    <nav class="py-3 px-2">
+        <ul class="px-3 md:px-0 py-2 rounded-xl flex flex-wrap overflow-hidden items-center text-xs">
+            <button type="button" [routerLink]="['/home']" [ngClass]="{'bg-blue boder shadow h-7' : optionMenu == '1'}" 
+                class="w-full h-5 cursor-pointer rounded-l-xl text-left pl-2 px-2 py-1 my-2">
+                <i class="fa fa-home fa-lg mr-2 text-green-700" [ngClass]="{'text-white' : optionMenu == '1'}" ></i><span class="text-sm text-white"> {{ "fototeca.home" | transloco }}</span>
+            </button>
+           
+        </ul>
+    </nav>
+</div>
+
+

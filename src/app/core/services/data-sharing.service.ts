@@ -1,8 +1,11 @@
-import { Injectable, OnInit, Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment as env } from '../../../environments/environment';
-@Injectable()
-export class DataSharingService {
 
+@Injectable({
+    providedIn: 'root'
+})
+export class DataSharingService {
+  
     private userStorage;
     constructor() {
         this.userStorage = env.geaAppURL;
@@ -15,8 +18,9 @@ export class DataSharingService {
         const storageData = this.userStorage;
         setTimeout(function () {
             iWindow?.postMessage(storageData, env.cerberoFrontURL);
-            window.open(env.cerberoFrontURL, '_self');
+            setTimeout(function () {
+                window.open(env.cerberoFrontURL, '_self');
+            }, 1000);
         }, 1000);
     }
-
 }

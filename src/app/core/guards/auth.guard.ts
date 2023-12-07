@@ -9,7 +9,10 @@ import { DataSharingService } from '../services/data-sharing.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private authService: AuthService, private dataSharingService: DataSharingService, private storageService: StorageService) {}
+  constructor(
+    private dataSharingService: DataSharingService, 
+    private storageService: StorageService
+    ) {}
 
   postAdminData() {
     this.dataSharingService.postCrossDomainMessage();
@@ -39,25 +42,13 @@ export class AuthGuard implements CanActivate {
     if (user && user?.role && next.data['role'] && !next.data['role'].includes(user.role)) {
       this.sendAppNameToCerberoFront();
       return false;
+      
     }
 
-    if (user && user.accounType) {
-      if (next.data['type'] && !next.data['type'].includes(user.accounType)) {
-        this.sendAppNameToCerberoFront();
-        return false;
-      }
-    }
-
-    if (user && user.account_type) {
-      if (next.data['type'] && !next.data['type'].includes(user.account_type)) {
+    if (!user ) {
       this.sendAppNameToCerberoFront();
       return false;
-      }
-    }
-
-    if (!user || (state.url?.includes('admin') && user?.role !== 'Admin')) {
-      this.sendAppNameToCerberoFront();
-      return false;
+      
     }
 
     return true;

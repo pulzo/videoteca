@@ -1,0 +1,32 @@
+<article class="bg-white shadow-lg pr-8 pl-10 pt-2 pb-2 md:flex md:justify-between md:items-center">
+    <div class="flex items-center gap-0">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Lgo_pulzo.svg/2560px-Lgo_pulzo.svg.png"
+            class="h-8 mx-4 md:ml-0" alt="logo" />
+        <h1 class="border-l-2 pl-5 font-semibold text-sm uppercase text-gray-medio tracking-wide">
+            {{title}}
+        </h1>
+    </div>
+
+    <div class="flex gap-7 items-center justify-between">
+        <p class="inline-block py-2 text-dark-light text-sm font-semibold no-underline pr-8">
+            {{ 'globals.hello' | transloco }}
+        </p>
+
+        <div class="dropdown w-12 rounded-md">
+            <button>
+                <div class="border-solid border rounded-lg w-20 grid grid-cols-2 pr-2 py-2">
+                    <a class="tracking-wider">
+                        <span class="ml-2 pt-12"><i class="fas fa-chevron-down text-green-600"></i></span>
+                    </a>
+                    <img class="w-8 h-8 rounded-full pl-1"
+                        src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Clipart.png" alt="" />
+                </div>
+            </button>
+            <div class="dropdown-content bg-white rounded-md border-[1px]">
+                <button class="w-40 h-10 rounded-md text-sm hover:text-red-light" (click)="logout()">
+                    <i class="fas fa-sign-out-alt fa-fw mr-2"></i>{{ 'globals.closeSesion' | transloco }}
+                </button>
+            </div>
+        </div>
+    </div>
+</article>
