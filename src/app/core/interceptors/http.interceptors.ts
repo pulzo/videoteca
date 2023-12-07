@@ -10,11 +10,7 @@ import { PulzoHubService } from '../services';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
-  constructor(
-    private authService: AuthService,
-    private storageService: StorageService,
-    private pulzoHubService: PulzoHubService
-  ) { }
+  constructor(private authService: AuthService, private pulzoHubService: PulzoHubService, private storageService: StorageService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let user = this.storageService.decryptAndGetObject('user');
@@ -39,22 +35,33 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     return (next as any).handle(req).pipe(catchError((err) => this.handleError(err, req)));
   }
 
+  private redirectToLogin(): void {
+    this.removeItems()
+    window.open(`${env.cerberoFrontURL}/login`, '_self');
+  }
+
+  private removeItems(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.pulzoHubService.removePulzoHub();
+  }
+
   private handleError(err: any, req: any): any {
     //console.log(err);
     if (err.status === 401) {
-      this.authService.logout();
+      this.redirectToLogin();
       return throwError(() => err);
     }
     if (err.status === 404) {
-      this.authService.logout();
+      this.redirectToLogin();
       return throwError(() => err);
     }
     if (err.status === 500) {
-      this.authService.logout();
+      this.redirectToLogin();
       return throwError(() => err);
     }
 
-    Swal.fire('', err.message, 'error');
+    Swal.fire('', err.error.error.message, 'error');
     return throwError(() => err);
   }
 }

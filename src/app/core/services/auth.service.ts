@@ -1,8 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-
 import { environment as env } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models';
@@ -13,6 +10,8 @@ import { StorageService } from './storage.service';
 export class AuthService {
   private baseUrl = `${env.apiCerberoUrl}`;
   private _user: User | null = null;
+
+  constructor(private http: HttpClient, private router: Router, private pulzoHubService: PulzoHubService, private storageService: StorageService) {}
 
   get user(): User | null {
     return this._user;
@@ -26,8 +25,6 @@ export class AuthService {
     
     this._user = user;
   }
-
-  constructor(private http: HttpClient, private router: Router, private pulzoHubService: PulzoHubService, private storageService: StorageService) {}
 
   isAuthenticated() {
     return !!this._user;

@@ -15,7 +15,6 @@ export class PulzoHubService {
 
   getPulzoHub() {
     const item = this.storageService.decryptAndGetObject(this.pulzo_hub_key);
-    console.log('item', item);
     if (!item) {
       return null;
     }
