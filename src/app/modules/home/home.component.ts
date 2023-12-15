@@ -9,7 +9,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private storageService: StorageService,  private pulzoHubService: PulzoHubService, private modalService: ModalService, private router: Router) {
+  constructor(private storageService: StorageService,  private pulzoHubService: PulzoHubService) {
     const user = this.storageService.decryptAndGetObject('user');
     if (user) {
         this.pulzoHubService.setPulzoHub(user._id);
