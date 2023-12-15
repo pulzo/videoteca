@@ -4,20 +4,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { ButtonsIrisModule, InputIrisModule } from 'iris-front';
 import { TranslocoRootModule } from './core/transloco-root.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from './modules/auth/auth.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { httpInterceptorProviders } from './core/interceptors';
-import { MainLayoutComponent } from './layout/components/main-layout/main-layout.component';
 import { LayoutModule } from './layout/layout.module';
 import { ErrorsModule } from './modules/errors/errors.module';
-
-import { environment as env } from 'src/environments/environment';
-import * as Sentry from "@sentry/angular-ivy";
-import { BrowserTracing } from "@sentry/tracing";
-import { RewriteFrames } from '@sentry/integrations';
-
+import { DataSharingService } from './core/services';
+import { HomeModule } from './modules/home/home.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 if (env.production || env.staging) {
   Sentry.init({
@@ -25,9 +20,8 @@ if (env.production || env.staging) {
     release: env.release,
     environment: env.production ? 'prod' : 'dev',
     integrations: [
-      new RewriteFrames(),
-      new BrowserTracing({
-        tracingOrigins: ['localhost', 'https://yourserver.io/api'],
+      new Sentry.BrowserTracing({
+        tracePropagationTargets: ["localhost", "https://yourserver.io/api"],
         routingInstrumentation: Sentry.routingInstrumentation,
       }),
     ],
@@ -39,7 +33,6 @@ if (env.production || env.staging) {
   });
 }
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -49,16 +42,17 @@ if (env.production || env.staging) {
     FontAwesomeModule,
     ButtonsIrisModule,
     InputIrisModule,
-    AuthModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslocoRootModule,
     AppRoutingModule,
     LayoutModule,
-    ErrorsModule
-    
+    ErrorsModule,
+    HomeModule,
+    SharedModule
   ],
-  providers: [httpInterceptorProviders, AppComponent],
+  providers: [httpInterceptorProviders, AppComponent, DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

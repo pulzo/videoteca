@@ -2,46 +2,66 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { AuthService } from '../services';
 import Swal from 'sweetalert2';
+import { environment as env } from 'src/environments/environment';
+import { PulzoHubService } from '../services/pulzo-hub.service';
+import { StorageService } from '../services/storage.service';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private pulzoHubService: PulzoHubService, private storageService: StorageService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = sessionStorage.getItem('token');
+    let user = this.storageService.decryptAndGetObject('user');
+    const token = user.token;
+    const nameAppHub = env.nameAppHub;
+    const pulzoHub = this.pulzoHubService.getPulzoHub();
 
-    if (token && !req?.url.endsWith('login')) {
-      req = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    if (pulzoHub && token && !req?.url.endsWith('login') && !req?.url.endsWith('logout')) {
+      const array: string[] = pulzoHub.substring(1, pulzoHub.length - 1).split(',');
+      for (const item of array) {
+        if (item.includes(nameAppHub)) {
+          req = req.clone({
+            setHeaders: {
+              'pulzohub': item.substring(1, item.length - 1),
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          break;
+        }
+      }
     }
     return (next as any).handle(req).pipe(catchError((err) => this.handleError(err, req)));
+  }
+
+  private redirectToLogin(): void {
+    this.removeItems()
+    window.open(`${env.cerberoFrontURL}/login`, '_self');
+  }
+
+  private removeItems(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.pulzoHubService.removePulzoHub();
   }
 
   private handleError(err: any, req: any): any {
     //console.log(err);
     if (err.status === 401) {
-      this.authService.logout();
-      this.router.navigate(['/login']);
+      this.redirectToLogin();
       return throwError(() => err);
     }
     if (err.status === 404) {
-      this.authService.logout();
-      this.router.navigate(['/not-found']);
+      this.redirectToLogin();
       return throwError(() => err);
     }
     if (err.status === 500) {
-      this.authService.logout();
-      this.router.navigate(['/internal-server']);
+      this.redirectToLogin();
       return throwError(() => err);
     }
 
-    Swal.fire('', err.error.error, 'error');
+    Swal.fire('', err.error.error.message, 'error');
     return throwError(() => err);
   }
 }
