@@ -10,7 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { httpInterceptorProviders } from './core/interceptors';
 import { LayoutModule } from './layout/layout.module';
 import { ErrorsModule } from './modules/errors/errors.module';
-import { DataSharingService } from './core/services';
+import { DataSharingService } from './core/services/data-sharing.service';
+
+import { environment as env } from 'src/environments/environment';
+import * as Sentry from "@sentry/angular-ivy";
 import { HomeModule } from './modules/home/home.module';
 import { SharedModule } from './modules/shared/shared.module';
 

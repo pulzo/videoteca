@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-back-header',
@@ -7,7 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BackHeaderComponent implements OnInit {
   @Input() link: string | undefined;
-  
   constructor() { }
 
   ngOnInit(): void {

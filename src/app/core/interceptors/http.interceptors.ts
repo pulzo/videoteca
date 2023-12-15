@@ -4,9 +4,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from '../services';
 import Swal from 'sweetalert2';
-import { StorageService } from '../services/storage.service';
 import { environment as env } from 'src/environments/environment';
-import { PulzoHubService } from '../services';
+import { PulzoHubService } from '../services/pulzo-hub.service';
+import { StorageService } from '../services/storage.service';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {

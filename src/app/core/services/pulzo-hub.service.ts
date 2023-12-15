@@ -7,7 +7,6 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class PulzoHubService {
-
   pulzo_hub_key: string = 'pulzohub';
   baseUrl = `${env.apiCerberoUrl}`;
 
@@ -29,7 +28,6 @@ export class PulzoHubService {
           const pulzohubValue = item.pulzohub;
           pulzohubValues.push(pulzohubValue);
         }
-        // save
         this.storageService.encryptAndSaveObject(this.pulzo_hub_key, JSON.stringify(pulzohubValues));
       }
     });

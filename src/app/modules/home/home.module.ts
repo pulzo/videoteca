@@ -1,14 +1,17 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { TranslocoModule } from '@ngneat/transloco';
-import { BasicTableIrisModule, BuscadorModule, ButtonsIrisModule, HeaderModule, NavbarModule, PaginadorIrisModule } from 'iris-front';
+import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { FormsModule } from '@angular/forms';
+import { TranslocoModule } from '@ngneat/transloco';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
-  declarations: [HomeComponent],
-  imports: [RouterModule, HeaderModule, NavbarModule, BasicTableIrisModule, PaginadorIrisModule, CommonModule, BuscadorModule, ButtonsIrisModule, TranslocoModule, FormsModule, SharedModule],
+  declarations: [
+    HomeComponent
+  ],
+  imports: [
+    CommonModule, TranslocoModule, SharedModule, FormsModule, ReactiveFormsModule
+  ]
 })
-export class HomeModule {}
+export class HomeModule { }

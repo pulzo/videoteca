@@ -6,7 +6,6 @@ import { environment as env } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class StorageService {
-
   secretKey: string = env.secretKey;
 
   constructor() { }

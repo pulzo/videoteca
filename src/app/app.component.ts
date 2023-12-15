@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener} from '@angular/core';
 import { environment as env } from 'src/environments/environment';
 import { StorageService } from './core/services/storage.service';
 
