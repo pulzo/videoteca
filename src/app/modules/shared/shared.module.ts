@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { BackHeaderComponent } from './back-header/back-header.component';
 import { HeaderComponent } from './header/header.component';
-import { SiderbarComponent } from './siderbar/siderbar.component';
 import { RouterModule } from '@angular/router';
+import { SiderbarDarkComponent } from './siderbar-dark/siderbar-dark.component';
+import { SiderbarLightComponent } from './siderbar-light/siderbar-light.component';
 
 @NgModule({
   declarations: [
     BackHeaderComponent,
     HeaderComponent,
-    SiderbarComponent
+    SiderbarDarkComponent,
+    SiderbarLightComponent
   ],
   imports: [
     CommonModule, TranslocoModule, RouterModule

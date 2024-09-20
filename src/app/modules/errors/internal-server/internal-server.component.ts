@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { PulzoHubService } from 'src/app/core/services';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-internal-server',
@@ -7,7 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: [],
 })
 export class InternalServerComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private pulzoHubService: PulzoHubService) {}
 
   ngOnInit(): void {}
+
+  redirectToLogin(): void {
+    this.removeItems()
+    window.open(`${env.cerberoFrontURL}/login`, '_self');
+  }
+
+  private removeItems(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.pulzoHubService.removePulzoHub();
+  }
 }

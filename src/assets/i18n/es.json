@@ -44,6 +44,12 @@
     "update": "Actualizar",
     "filter": "Filtrar",
     "clean": "Limpiar filtro",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "home": "Home",
+    "slack": "Contacta a soporte",
+    "requiredField":"Los campos con * son obligatorios",
+    "required": "Este campo es requerido",
+    "asset": "Activo",
+    "options": "Opciones"
   }
 }

@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from '../services';
+import { Router } from '@angular/router';
+import { AuthService, StorageService, PulzoHubService } from '../services';
 import Swal from 'sweetalert2';
 import { environment as env } from 'src/environments/environment';
-import { PulzoHubService } from '../services/pulzo-hub.service';
-import { StorageService } from '../services/storage.service';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private pulzoHubService: PulzoHubService, private storageService: StorageService) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private storageService: StorageService,
+    private pulzoHubService: PulzoHubService
+    ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let user = this.storageService.decryptAndGetObject('user');
@@ -53,15 +57,15 @@ export class CustomHttpInterceptor implements HttpInterceptor {
       return throwError(() => err);
     }
     if (err.status === 404) {
-      this.redirectToLogin();
+      this.router.navigate(['/not-found']);
       return throwError(() => err);
     }
     if (err.status === 500) {
-      this.redirectToLogin();
+      this.router.navigate(['/internal-server']);
       return throwError(() => err);
     }
 
-    Swal.fire('', err.error.error.message, 'error');
+    Swal.fire('', err.error.error.message || 'Ocurrió un error inesperado', 'error');
     return throwError(() => err);
   }
 }

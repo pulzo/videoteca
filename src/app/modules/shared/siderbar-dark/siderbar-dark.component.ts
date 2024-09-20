@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-siderbar',
-  templateUrl: './siderbar.component.html',
-  styleUrls: ['./siderbar.component.css']
+  selector: 'app-siderbar-dark',
+  templateUrl: './siderbar-dark.component.html',
+  styleUrls: ['./siderbar-dark.component.css']
 })
-export class SiderbarComponent implements OnInit {
+export class SiderbarDarkComponent implements OnInit {
   @Input() optionMenu: string | undefined;
   sider!: boolean;
 
@@ -21,4 +21,5 @@ export class SiderbarComponent implements OnInit {
       this.sider = true;
     }
   }
+
 }
