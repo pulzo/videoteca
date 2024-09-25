@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout/components/main-layout/main-layout.component';
 import { HomeComponent } from './modules/home/home.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './modules/errors/not-found/not-found.module';
+import { InternalServerComponent } from './modules/errors/internal-server/internal-server.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -15,7 +17,16 @@ const routes: Routes = [
       canActivate: [AuthGuard],
       path: 'home',
       component: HomeComponent,
-    }
+    },
+     /* Módulo errores */
+     {
+      path: 'not-found',
+      component: NotFoundComponent,
+    },
+    {
+      path: 'internal-server',
+      component: InternalServerComponent,
+    },
   ],
     
   },
