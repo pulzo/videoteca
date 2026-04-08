@@ -30,6 +30,10 @@ export class AuthService {
     return !!this._user;
   }
 
+  public getUserLogged(){
+    return this.storageService.decryptAndGetObject('user').email;
+  }
+
   logout() {
     this.user = null;
     this.http.get<any>(`${this.baseUrl}/logout`);

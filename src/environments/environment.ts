@@ -10,7 +10,7 @@ export const environment = {
   sentry: '',
   release: '1.0.0',
   secretKey: 'jbe4jb43hjb56oie5jtil34894',
-  nameAppHub: 'proyectoApp',
+  nameAppHub: 'DAAB',
   cerberoFrontURL: 'http://localhost:4500',
   geaAppURL: 'http://localhost:4700',
 };

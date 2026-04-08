@@ -3,7 +3,8 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AuthService, StorageService, PulzoHubService } from '../services';
+import { AuthService, PulzoHubService } from '../services';
+import { StorageService } from '../services/storage.service';
 import Swal from 'sweetalert2';
 import { environment as env } from 'src/environments/environment';
 
@@ -19,13 +20,27 @@ export class CustomHttpInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let user = this.storageService.decryptAndGetObject('user');
     const token = user.token;
-    const nameAppHub = env.nameAppHub;
+    
+    
+    const routes: { [key: string]: string } = {
+      'voz-ia-listar-voces': 'RedaccionApp',
+      'video': env.nameAppHub
+    };
+    
+    const param:string = req?.url.split('=')[1];
+    let nameAppHub = routes[param];
     const pulzoHub = this.pulzoHubService.getPulzoHub();
+
+    if (param == undefined){
+      nameAppHub = 'RedaccionApp';
+    }
 
     if (pulzoHub && token && !req?.url.endsWith('login') && !req?.url.endsWith('logout')) {
       const array: string[] = pulzoHub.substring(1, pulzoHub.length - 1).split(',');
+      
       for (const item of array) {
-        if (item.includes(nameAppHub)) {
+        if (item.includes(nameAppHub) || item.includes(nameAppHub)) {
+          console.log("Se envia el token")
           req = req.clone({
             setHeaders: {
               'pulzohub': item.substring(1, item.length - 1),
@@ -52,6 +67,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
   private handleError(err: any, req: any): any {
     //console.log(err);
+    
     if (err.status === 401) {
       this.redirectToLogin();
       return throwError(() => err);

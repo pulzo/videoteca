@@ -16,6 +16,7 @@ import { environment as env } from 'src/environments/environment';
 import * as Sentry from "@sentry/angular-ivy";
 import { HomeModule } from './modules/home/home.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { VideoModule } from './modules/video/video.module';
 
 if (env.production || env.staging) {
   Sentry.init({
@@ -53,7 +54,8 @@ if (env.production || env.staging) {
     LayoutModule,
     ErrorsModule,
     HomeModule,
-    SharedModule
+    SharedModule,
+    VideoModule,
   ],
   providers: [httpInterceptorProviders, AppComponent, DataSharingService],
   bootstrap: [AppComponent]

@@ -7,6 +7,13 @@
                 <span class="text-base text-dark-light" [ngClass]="{'text-white' : optionMenu == '1'}"> {{ "globals.home" | transloco }}</span>
             </button>
         </ul>
+        <ul class="px-3 md:px-0 py-2 rounded-xl flex flex-wrap overflow-hidden items-center text-xs">
+            <button type="button" [routerLink]="['/make-video']" [ngClass]="{'bg-green hover:bg-green-light  text-white' : optionMenu == '2'}" 
+                class="w-56 h-14 cursor-pointer text-left px-5 py-4 my-2 hover:bg-light-dark rounded-xl">
+                <i class="fas fa-video fa-lg mr-2 text-dark-light" [ngClass]="{'text-white' : optionMenu == '2'}" ></i>
+                <span class="text-base text-dark-light" [ngClass]="{'text-white' : optionMenu == '2'}"> {{ "daab.make" | transloco }}</span>
+            </button>
+        </ul>
     </nav>
    
     <nav class="flex flex-col items-center justify-center h-4/6 w-full">
@@ -21,5 +28,7 @@
                 </svg>
             <span class="text-base text-dark-light">{{ "globals.slack" | transloco }}</span>
         </button>
+
+        
     </nav>
 </div>

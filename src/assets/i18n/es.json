@@ -16,6 +16,9 @@
       }
     }
   },
+  "daab":{
+    "make":"Crear video"
+  },
 
   "globals": {
     "hello":"¡Hola de nuevo!",

@@ -18,7 +18,7 @@ import { SiderbarLightComponent } from './siderbar-light/siderbar-light.componen
     CommonModule, TranslocoModule, RouterModule
   ],
   exports: [
-    TranslocoModule, RouterModule, HeaderComponent, BackHeaderComponent, SiderbarComponent
+    TranslocoModule, RouterModule, HeaderComponent, BackHeaderComponent, SiderbarDarkComponent, SiderbarLightComponent
   ]
 })
 export class SharedModule { }
