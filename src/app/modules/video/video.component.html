@@ -16,6 +16,7 @@
             <source [src]="video_url" type="video/mp4">
         </video>
 
+        <p *ngIf="video_url"><a href="{{ video_url }}">Descargar video</a></p>
 
         <form [formGroup]="form">
 
@@ -47,6 +48,16 @@
             </select>
         </div>
 
+        <div class="mb-8 w-[30%] mt-6">
+            <label class="block text-sm font-bold mb-2">Orientación</label>
+            <select formControlName="orientacion" class="w-full border border-gray-300
+                rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500
+                focus:border-transparent transition-all rounded-md px-4 py-3">
+                <option *ngFor="let o of orientaciones" [value]="o.key">
+                    {{ o.value }}
+                </option>
+            </select>
+        </div>
 
         <button  (click)="generarVideo()" 
             class="bg-[#3C00A3] text-white px-6 py-3 rounded-xl mt-6 flex gap-1 w-[22%]">
@@ -61,6 +72,20 @@
 
     </div>
 
-    
+    <div *ngIf="loading" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 w-[420px] shadow-2xl flex flex-col items-center gap-4">
+            <div class="w-12 h-12 border-4 border-[#3C00A3] border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-xl font-bold text-gray-800">Generando video</p>
+            <div class="w-full bg-gray-200 rounded-full h-3">
+            <div class="bg-[#3C00A3] h-3 rounded-full transition-all duration-500"
+                [style.width.%]="progresoActual">
+            </div>
+            </div>
+            <p class="text-sm font-semibold text-[#3C00A3]">{{ labelPasoActual }}</p>
+            <p *ngIf="esPasoLento" class="text-xs text-amber-600 font-medium text-center">
+            ⏳ Este paso puede tomar varios minutos, por favor espera.
+            </p>
+        </div>
+    </div>
     
 </div>

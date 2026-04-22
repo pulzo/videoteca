@@ -7,5 +7,6 @@ export interface MakeVideoRequest {
   link: string;
   voz_id: string;
   section: string;
+  type_video: string;
 }
 
