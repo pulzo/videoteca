@@ -82,7 +82,7 @@ export class VideoComponent implements OnInit {
       voiceId: ['', Validators.required],
       sectionId: ['', Validators.required],
       orientacion: ['vertical', Validators.required]  // ← agrega esto
-    });
+    }); 
   }
 
   private getVocesIA(): void {
