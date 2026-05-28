@@ -1,25 +1,13 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false,
   staging: false,
   apiCerberoUrl: 'https://stage-cerberos.pulzo.com/cerbero/v2',
   pageSize: 25,
+  apiKey: 'DAAB',
   sentry: '',
-  release: '1.0.0',
+  release: '1.1.4',
   secretKey: 'jbe4jb43hjb56oie5jtil34894',
   nameAppHub: 'DAAB',
   cerberoFrontURL: 'http://localhost:4500',
   geaAppURL: 'http://localhost:4700',
 };
-  
-  /*
-   * For easier debugging in development mode, you can import the following file
-   * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
-   *
-   * This import should be commented out in production mode because it will have a negative impact
-   * on performance if an error is thrown.
-   */
-  // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

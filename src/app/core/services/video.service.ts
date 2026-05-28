@@ -27,8 +27,8 @@ export class VideoService {
   makeVideo(payload: MakeVideoRequest){
     return this.http
       .post(
-        //`${this.baseUrl}/request?event=video`,
-        'http://localhost:8000/video',
+        `${this.baseUrl}/request?event=video`,
+        //'http://localhost:8000/video',
         payload
       )
       .pipe(
@@ -36,15 +36,8 @@ export class VideoService {
       );
   }
 
-  getStatus(postId: string|null): Observable<any> {
-    //return this.http.get(`${this.baseUrl}/status/${postId}`);
-    return this.http.get(`http://localhost:8000/status/${postId}`);
+  getStatus(postId: string | null): Observable<any> {
+    return this.http.get(`${this.baseUrl}/request?event=video-status&post_id=${postId}`);
+    // return this.http.get(`http://localhost:8000/status/${postId}`); // localhost anterior
   }
-
-
-
-
-
-  
-
 }

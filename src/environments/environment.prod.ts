@@ -1,13 +1,13 @@
 export const environment = {
-  production: false,
+  production: true,
   staging: false,
-  apiCerberoUrl: 'https://stage-cerberos.pulzo.com/cerbero/v2',
+  apiKey: 'DAAB',
+  apiCerberoUrl: 'https://cerbero.pulzo.com/cerbero/v2',
   pageSize: 25,
-  sentry: '',
-  release: '1.0.0',
+  release: '1.1.8',
+  sentry: 'https://590a4dfdf84187bed4bbacb77440dd17@o215667.ingest.us.sentry.io/4507115306221568',
   secretKey: 'jbe4jb43hjb56oie5jtil34894',
-  nameAppHub: 'proyectoApp',
+  nameAppHub: 'DAAB@VideoMaker',
   cerberoFrontURL: 'https://hub.pulzo.com',
-  geaAppURL: 'https://data.pulzo.com',
+  geaAppURL: 'https://videoteca.pulzo.com',
 };
-  
