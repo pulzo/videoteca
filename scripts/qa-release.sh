@@ -8,7 +8,7 @@ rm -rf dist
 
 ng build --configuration=staging --aot --output-hashing=all
 
-export SENTRY_AUTH_TOKEN=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;
+export SENTRY_AUTH_TOKEN=;
 export SENTRY_PROJECT=video-ia-frontend-daab;
 
 ./node_modules/.bin/sentry-cli releases --org=pulzo-gf  new $version
